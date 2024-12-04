@@ -1,0 +1,46 @@
+Criação tabela usuarios:
+
+CREATE TABLE usuarios(
+id INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR,
+sobrenome VARCHAR,
+registroUsuario VARCHAR,
+pontos INT,
+insignia VARCHAR);
+
+Criação tabela livros:
+
+CREATE TABLE livros(
+id INT AUTO_INCREMENT PRIMARY KEY,
+titulo VARCHAR,
+autor VARCHAR,
+codigoLivro VARCHAR,
+reservado BOOLEAN);
+
+Criação tabela loginFuncionario:
+
+CREATE TABLE loginFuncionario(
+id INT AUTO_INCREMENT PRIMARY KEY,
+login VARCHAR,
+senha VARCHAR);
+
+Criação tabela loginUsuario:
+
+CREATE TABLE loginUsuario(
+id INT AUTO_INCREMENT PRIMARY KEY,
+login VARCHAR,
+senha VARCHAR);
+
+Criação tabela reservas:
+
+CREATE TABLE reservas (
+id INT PRIMARY KEY AUTO_INCREMENT, 
+id_usuario INT, 
+id_livro INT, 
+data_reserva DATE, 
+data_devolucao DATE, 
+devolvido BOOLEAN DEFAULT FALSE, 
+diffDias INT, 
+FOREIGN KEY (id_usuario) REFERENCES usuarios(id), 
+FOREIGN KEY (id_livro) REFERENCES livros(id));
+

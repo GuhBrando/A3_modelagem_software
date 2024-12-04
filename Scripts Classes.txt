@@ -1,0 +1,57 @@
+Reserva de Livro:
+
+"SELECT * FROM livros";
+"UPDATE livros SET reservado = ? WHERE codigoLivro = ?";
+"UPDATE usuarios SET pontos = pontos + 5 WHERE registroUsuario = ?";
+"SELECT * FROM usuarios";
+"INSERT INTO reservas (id_usuario, id_livro, data_reserva, devolvido) VALUES (?, ?, ADDDATE(CURDATE(), INTERVAL 1 DAY), ?)";
+
+Devolução de livro:
+"SELECT * FROM livros";
+"UPDATE livros SET reservado = ? WHERE codigoLivro = ?";
+"UPDATE reservas SET data_devolucao = ADDDATE(CURDATE(), INTERVAL 1 DAY), devolvido = TRUE, diffDias = DATEDIFF(data_devolucao, data_reserva) WHERE id_usuario = ? AND id_livro = ? AND devolvido = FALSE";
+"SELECT * FROM usuarios";
+"SELECT diffDias from reservas WHERE id_usuario = ? and id_livro = ?";
+"UPDATE usuarios SET pontos = pontos + ? WHERE id = ?";
+
+Procura de livro por código, autor ou título:
+"SELECT * FROM livros";
+
+Cadastrar livro:
+"INSERT INTO livros (titulo, autor, codigoLivro, reservado) VALUES (?, ?, ?, ?)";
+
+Remover livro:
+"DELETE FROM livros WHERE titulo = ? AND autor = ? AND codigoLivro = ?";
+
+Cadastrar usuário:
+"INSERT INTO usuarios (nome, sobrenome, registroUsuario, pontos) VALUES (?, ?, ?, ?)";
+
+Remover usuário:
+"DELETE FROM usuarios WHERE nome = ? AND sobrenome = ? AND registroUsuario = ?";
+"DELETE FROM reservas WHERE id_usuario = ?";
+"SELECT id FROM usuarios WHERE nome = ? AND sobrenome = ? AND registroUsuario = ?";
+
+Listagem alfabética livros:
+"SELECT * FROM livros ORDER BY titulo ASC";
+
+Listagem alfabética usuários:
+"SELECT * FROM usuarios ORDER BY nome ASC";
+
+Listagem por ordem de adição livros:
+"SELECT * FROM livros";
+
+Listagem por ordem de adição usuários:
+"SELECT * FROM usuarios";
+
+Listagem leaderboard:
+"SELECT * FROM usuarios ORDER BY pontos DESC;";
+"UPDATE usuarios SET insignia = ? WHERE id = ?";
+
+Listagem reservas:
+"SELECT * FROM reservas";
+
+Login para funcionário:
+"SELECT * FROM loginFuncionario";
+
+Login para usuário:
+"SELECT * FROM loginUsuario";
